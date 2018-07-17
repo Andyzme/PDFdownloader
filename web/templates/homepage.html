@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Free PDF Archives</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css" >
+    <style type="text/css">
+      html, body {
+          margin: 0px;
+          height: 100%;
+      }
+      .row {
+          margin: 0px;
+      }
+      #header {
+          height: 8%;
+      }
+      #content {
+          background-color: white;
+      }
+      #content .row .product-row {
+          height: 200px;
+      }
+      #content .item {
+          height: 100%;
+          padding-top: 2%;
+      }
+      #content .item img {
+          max-width: 70%;
+          max-height: 70%;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+      }
+      #content .item p {
+          text-align: center;
+      }
+      #logo {
+          height: 100%;
+          padding: 0px;
+      }
+      #logo img {
+          display: block;
+          max-width: 100%;
+          max-height: 100%;
+      }
+      #searchbox {
+          height: 100%;
+          padding: 0px;
+      }
+      #searchbox input {
+          border: 0px;
+          padding: 0px;
+          min-width: 100%;
+          min-height: 100%;
+          font-size: 3em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row" id="header">
+        <div class="col-xs-4" id="logo"><img src="/static/logo.png"/></div>
+        <div class="col-xs-8" id="searchbox">
+            <input id="filter" type="text" placeholder= "Searchbar (In Progress)"/>
+        </div>
+    </div>
+    <div class="row" id="content">
+        {% for product_row in products %}
+        <div class="row product-row">
+            {% for product in product_row %}
+            <div class="col-xs-2 item"> <a target="_blank" href="/download?id={{product}}">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Pdf_by_mimooh.svg/960px-Pdf_by_mimooh.svg.png"/>
+                <p>{{product}}</p></a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+  </body>
+</html>
